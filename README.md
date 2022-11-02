@@ -1,7 +1,7 @@
 # Double-Pendulum-Visualtisation
 Visualise the output of a swinging pendulum attached to a second swining pendulum. The motion is classified as chaos.
 
-REQUIRES SDL2 AND SDL2_IMAGE libraries. (Simple Directmedia Layer)
+REQUIRES SDL2 AND SDL2_IMAGE libraries. (Simple Directmedia Layer). Once they are downloaded and linked, the code should compile as is.
 
 Progress 1) 4th order runge-kutta algorithm implemented succesfully.
 
