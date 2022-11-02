@@ -11,5 +11,7 @@ Next 1) Input the double pendulum system functions to evaluate the double pendul
 
 Next 2) Connect a line between the two points and the first point and the origin. This will represent the pendulum bars/strings. Presumably will require image rotation to match pendulum angles at each frame of simulation.
 
+END GOAL) Create an game/app for visualization of simple and complex physical systems.
+
 
 A single swinging pendulum exhibits periodic, predictable, non-chaotic motion. That is to say that it repeats itself (infinitely if there is no energy loss), and a small change in the initial motion of the pendulum does not create a large difference in the motion at a much later time. However, attaching a second pendulum to the bottom of the first pendulum provides an example of chaotic motion. Even a tiny change in the initial motion of the pendulum system will create massive changes at later time. In other words, two intial states extremely similar to each other will become compeletely different after a certain amount of time. The goal of this little project is to visualise the solutions in real space, in real time, rather than a create static graphs of the pendulum positions x1(t) and x2(t). Static graphs are boring, real-time simulations are fun!
