@@ -50,16 +50,16 @@ gameObjectStatic::gameObjectStatic(const char* texturesheet, int x, int y)
 	ypos = y;
 }
 
-void gameObjectStatic::update()
+void gameObjectStatic::update(int xupdate, int yupdate)
 {
 
-	sourceRect.h = 3;
+	sourceRect.h = 1;
 	sourceRect.w = 100;
 	sourceRect.x = 0;
 	sourceRect.y = 0;
 
-	destRect.x = xpos;
-	destRect.y = ypos;
+	destRect.x = xupdate;
+	destRect.y = yupdate;
 	destRect.w = sourceRect.w ;
 	destRect.h = sourceRect.h ;
 }
@@ -68,8 +68,8 @@ void gameObjectStatic::render(double angle)
 {
 
 	SDL_Point pt;
-	pt.x = 1;
-	cout << pt.x << endl;
+	pt.x = 0;
+	//cout << pt.x << endl;
 	pt.y = 0;
 	
 	SDL_RenderCopyEx(game::renderer, objectTexture, NULL, &destRect, angle, &pt, SDL_FLIP_NONE);

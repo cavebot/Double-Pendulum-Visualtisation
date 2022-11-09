@@ -19,7 +19,15 @@ gameObject* pointBlue1 = nullptr;
 gameObject* pointBlue2 = nullptr;
 gameObject* pointBlue3 = nullptr;
 
-gameObjectStatic* line1 = nullptr;
+gameObjectStatic* line1Black = nullptr;
+gameObjectStatic* line2Black = nullptr;
+
+gameObjectStatic* line1Blue = nullptr;
+gameObjectStatic* line2Blue = nullptr;
+
+gameObjectStatic* line1Red = nullptr;
+gameObjectStatic* line2Red = nullptr;
+
 
 
 SDL_Renderer* game::renderer = nullptr;
@@ -30,7 +38,7 @@ int yinit = 300;
 
 double l1 = 1;
 double l2 = 1;
-double m1 = 1;
+double m1 = 0.5;
 double m2 = 1;
 double time_i = 0.0;
 
@@ -97,7 +105,13 @@ void game::init(const char* title, int xpos, int ypos, int width, int height, bo
 	pointBlue2 = new gameObject("assets/pointBlue.png", xinit, yinit);
 	pointBlue3 = new gameObject("assets/pointBlue.png", xinit, yinit);
 
-	line1 = new gameObjectStatic("assets/line.png", xinit+9, xinit+7);
+	line1Black = new gameObjectStatic("assets/line.png", xinit+9, xinit+7);
+	line2Black = new gameObjectStatic("assets/line.png", xinit+9, xinit+7);
+	line1Blue = new gameObjectStatic("assets/line.png", xinit + 9, xinit + 7);
+	line2Blue = new gameObjectStatic("assets/line.png", xinit + 9, xinit + 7);
+	line1Red = new gameObjectStatic("assets/line.png", xinit + 9, xinit + 7);
+	line2Red = new gameObjectStatic("assets/line.png", xinit + 9, xinit + 7);
+
 }
 
 
@@ -131,6 +145,10 @@ void game::update()
 	pointBlack2->update(x1,y1);
 	pointBlack3->update(x2,y2);
 
+	line1Black->update(xinit + 9, yinit + 7);
+	line2Black->update(x1+9, y1+7);
+
+	//////////////////////////////////////////////////////////////////////////////////////////////
 	/// <Red pendulum>
 	for (int i = 0; i < 10; i++) {
 		DoublePendulum(0.001, l1, l2, m1, m2, thetaRed1, omegaRed1, thetaRed2, omegaRed2, time_i);
@@ -145,6 +163,10 @@ void game::update()
 	pointRed2->update(x1, y1);
 	pointRed3->update(x2, y2);
 
+	line1Red->update(xinit + 9, yinit + 7);
+	line2Red->update(x1 + 9, y1 + 7);
+
+	//////////////////////////////////////////////////////////////////////////////////////////////
 	/// <Blue pendulum>
 	for (int i = 0; i < 10; i++) {
 		DoublePendulum(0.001, l1, l2, m1, m2, thetaBlue1, omegaBlue1, thetaBlue2, omegaBlue2, time_i);
@@ -159,15 +181,24 @@ void game::update()
 	pointBlue2->update(x1, y1);
 	pointBlue3->update(x2, y2);
 	
+	line1Blue->update(xinit + 9, yinit + 7);
+	line2Blue->update(x1 + 9, y1 + 7);
 	
 	
 	
-	line1->update();
 }
 
 void game::render()
 {
 	SDL_RenderClear(renderer);
+
+
+	line1Black->render(90 - (theta1 * 180.0 / 3.141459));
+	line2Black->render(90 - (theta2 * 180.0 / 3.141459));
+	line1Blue->render(90 - (thetaBlue1 * 180.0 / 3.141459));
+	line2Blue->render(90 - (thetaBlue2 * 180.0 / 3.141459));
+	line1Red->render(90 - (thetaRed1 * 180.0 / 3.141459));
+	line2Red->render(90 - (thetaRed2 * 180.0 / 3.141459));
 
 	pointRed1->render();
 	pointRed2->render();
@@ -177,10 +208,8 @@ void game::render()
 	pointBlue3->render();
 	pointBlack1->render();
 	pointBlack2->render();
-	pointBlack3->render();
+	pointBlack3->render(); 
 
-
-	line1->render(90 -(theta1*180/3.141459));
 
 	SDL_RenderPresent(renderer);
 }
